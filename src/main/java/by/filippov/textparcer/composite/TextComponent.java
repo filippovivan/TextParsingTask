@@ -9,7 +9,7 @@ public interface TextComponent {
 
 	boolean remove(TextComponent part) throws LogicalException;
 
-	List<TextComponent> childIterator() throws LogicalException;
+	List<TextComponent> getChilds() throws LogicalException;
 
 	String toString();
 }

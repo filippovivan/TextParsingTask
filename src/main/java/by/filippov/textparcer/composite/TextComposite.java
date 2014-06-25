@@ -6,7 +6,7 @@ import java.util.List;
 
 public class TextComposite implements TextComponent{
 
-	private List<TextComponent> components;
+	private ArrayList<TextComponent> components;
 
 	public TextComposite() {
 		super();
@@ -21,7 +21,7 @@ public class TextComposite implements TextComponent{
 		return components.remove(part);
 	}
 
-	public List<TextComponent> childIterator() {
+	public List<TextComponent> getChilds() {
 		return Collections.unmodifiableList(components);
 	}
 
@@ -30,7 +30,7 @@ public class TextComposite implements TextComponent{
 		StringBuilder builder = new StringBuilder();
 		for (TextComponent component : components) {
 			builder.append(component.toString());
-			builder.append("\n");
+			builder.append(" ");
 		}
 		return new String(builder);
 	}

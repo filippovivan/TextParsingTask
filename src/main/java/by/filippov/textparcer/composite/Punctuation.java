@@ -1,7 +1,7 @@
 package by.filippov.textparcer.composite;
 
 public class Punctuation extends TextLeaf {
-	private String punctuation;
+	private char punctuation;
 
 	@Override
 	public String toString() {
