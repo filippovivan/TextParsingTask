@@ -1,1 +1,0 @@
-25.06.2014 01:24:18 [main] ERROR by.bsu.textparcer.launcher.Launcher  - Hello world
