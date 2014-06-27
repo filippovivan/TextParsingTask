@@ -9,7 +9,6 @@ public class TextComposite implements TextComponent{
 	private ArrayList<TextComponent> components;
 
 	public TextComposite() {
-		super();
 		components = new ArrayList<TextComponent>();
 	}
 
