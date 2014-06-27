@@ -9,7 +9,7 @@ public class Listing extends TextLeaf {
 
 	@Override
 	public String toString() {
-		return "\n" + listing + "\n";
+		return "\n\t" + listing + "\n";
 	}
 
 }

@@ -14,7 +14,9 @@ public final class TextParcer {
 	public static TextComposite parce(String text) {
 		TextComposite result = new TextComposite();
 		Pattern paragraphRegexp = Pattern
-				.compile("(\\t.+?[\\t\\f\\n\\r]|((?m)#---[.\\.\\n]+---#))");
+				.compile("(#-++(.|\\n)+-+?#|(\\t[^(#-)]+?[\\t\\f\\n\\r]))");
+		/*Pattern paragraphRegexp = Pattern
+				.compile("#-+(.|\\n)+-+?#");*/
 		Pattern sentenceRegexp = Pattern
 				.compile("([А-ЯA-Z0-9]((т.п.|т.д.|пр.)|[^?!.\\(]|\\([^\\)]*\\))*[.?!])");
 		Pattern lexemRegexp = Pattern.compile("\\D+?[(\\s-)([:punct:]+?)]");
@@ -46,7 +48,6 @@ public final class TextParcer {
 	}
 
 	private static void addListingNode(TextComposite result, String paragraph) {
-		paragraph = paragraph.trim();
 		result.add(new Listing(paragraph));
 	}
 }
