@@ -64,7 +64,7 @@ public final class TextParcer {
 		TextComposite result = new TextComposite();
 
 		Matcher matcher = paragraphRegexp.matcher(text);
-		while (matcher.find()) {//TODO Stack overflow
+		while (matcher.find()) {
 			String paragraph = matcher.group();
 			paragraph = paragraph.trim();
 			if (!(paragraph.startsWith(listingPrefix) && paragraph
