@@ -13,6 +13,7 @@ import by.filippov.textparcer.composite.TextComposite;
 import by.filippov.textparcer.exceptions.TechnicalException;
 
 public final class TextParcer {
+	private static final String PROPERTIES_PATH = "/regexp.properties";
 	private static final String KEY_LISTING_PREFIX = "listingprefix";
 	private static final String KEY_LISTING_SUFFIX = "listingsuffix";
 	private static final String KEY_PARAGRAPH = "paragraph";
@@ -20,7 +21,6 @@ public final class TextParcer {
 	private static final String KEY_LEXEM = "lexem";
 	private static final String KEY_WORD = "word";
 	private static final String KEY_PUNCTUATION = "punctuation";
-	private static final String PROPERTIES_PATH = "/regexp.properties";
 	private static TextParcer instance;
 	private final Properties properties = new Properties();
 
@@ -64,7 +64,7 @@ public final class TextParcer {
 		TextComposite result = new TextComposite();
 
 		Matcher matcher = paragraphRegexp.matcher(text);
-		while (matcher.find()) {
+		while (matcher.find()) {//TODO Stack overflow
 			String paragraph = matcher.group();
 			paragraph = paragraph.trim();
 			if (!(paragraph.startsWith(listingPrefix) && paragraph
