@@ -22,6 +22,7 @@ public final class TextParcer {
 	private static final String KEY_WORD = "word";
 	private static final String KEY_PUNCTUATION = "punctuation";
 	private static TextParcer instance;
+	
 	private final Properties properties = new Properties();
 
 	private String listingSuffix;
