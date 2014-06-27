@@ -9,7 +9,13 @@ public class Punctuation extends TextLeaf {
 
 	@Override
 	public String toString() {
-		return value + " ";
+		switch (value) {
+		case '"':
+			return String.valueOf(value);
+		default:
+			return value + " ";
+		}
+
 	}
 
 }

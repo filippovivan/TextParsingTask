@@ -6,7 +6,7 @@ import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import by.filippov.textparcer.composite.Lexem;
+import by.filippov.textparcer.composite.Word;
 import by.filippov.textparcer.composite.Listing;
 import by.filippov.textparcer.composite.Punctuation;
 import by.filippov.textparcer.composite.TextComposite;
@@ -105,7 +105,7 @@ public final class TextParcer {
 		Matcher wordMatcher = wordRegexp.matcher(complexLexem);
 		if (wordMatcher.find()) {
 			String word = wordMatcher.group();
-			Lexem wordNode = new Lexem(word);
+			Word wordNode = new Word(word);
 			sentenceNode.add(wordNode);
 		}
 	}

@@ -28,8 +28,7 @@ public class TextComposite implements TextComponent{
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		for (TextComponent component : components) {
-			builder.append(component.toString());
-			builder.append(" ");
+			builder.append(component);
 		}
 		return new String(builder);
 	}
