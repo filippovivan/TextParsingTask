@@ -19,10 +19,9 @@ public final class TextParcer {
 	private static final String KEY_PARAGRAPH = "paragraph";
 	private static final String KEY_SENTENCE = "sentence";
 	private static final String KEY_LEXEM = "lexem";
-	private static final String KEY_WORD = "word";
 	private static final String KEY_PUNCTUATION = "punctuation";
 	private static TextParcer instance;
-	
+
 	private final Properties properties = new Properties();
 
 	private String listingSuffix;
@@ -30,7 +29,6 @@ public final class TextParcer {
 	private Pattern paragraphRegexp;
 	private Pattern sentenceRegexp;
 	private Pattern lexemRegexp;
-	private Pattern wordRegexp;
 	private Pattern punctuationRegexp;
 
 	private TextParcer() throws TechnicalException {
@@ -40,7 +38,6 @@ public final class TextParcer {
 			properties.load(is);
 			punctuationRegexp = Pattern.compile(properties
 					.getProperty(KEY_PUNCTUATION));
-			wordRegexp = Pattern.compile(properties.getProperty(KEY_WORD));
 			lexemRegexp = Pattern.compile(properties.getProperty(KEY_LEXEM));
 			sentenceRegexp = Pattern.compile(properties
 					.getProperty(KEY_SENTENCE));
@@ -96,20 +93,19 @@ public final class TextParcer {
 		while (lexemMatcher.find()) {
 			String complexLexem = lexemMatcher.group();
 			complexLexem = complexLexem.trim();
-			addWordNodeToSentence(sentenceNode, complexLexem);
-			addPunctuationNodesToSentence(sentenceNode, complexLexem);
+			Matcher punctuationMatcher = punctuationRegexp
+					.matcher(complexLexem);
+			if (!punctuationMatcher.find()) {
+				Word wordNode = new Word(complexLexem);
+				sentenceNode.add(wordNode);
+			} else {
+				Punctuation punctuationNode = new Punctuation(
+						complexLexem.charAt(0));
+				sentenceNode.add(punctuationNode);
+			}
 		}
 	}
 
-	private void addWordNodeToSentence(TextComposite sentenceNode,
-			String complexLexem) {
-		Matcher wordMatcher = wordRegexp.matcher(complexLexem);
-		if (wordMatcher.find()) {
-			String word = wordMatcher.group();
-			Word wordNode = new Word(word);
-			sentenceNode.add(wordNode);
-		}
-	}
 
 	private void addPunctuationNodesToSentence(TextComposite sentenceNode,
 			String complexLexem) {
