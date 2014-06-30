@@ -107,16 +107,6 @@ public final class TextParcer {
 	}
 
 
-	private void addPunctuationNodesToSentence(TextComposite sentenceNode,
-			String complexLexem) {
-		Matcher punctuationMatcher = punctuationRegexp.matcher(complexLexem);
-		while (punctuationMatcher.find()) {
-			char punctuation = punctuationMatcher.group().charAt(0);
-			Punctuation punctuationNode = new Punctuation(punctuation);
-			sentenceNode.add(punctuationNode);
-		}
-	}
-
 	private void addListingNode(TextComposite result, String listing) {
 		result.add(new Listing(listing));
 	}
