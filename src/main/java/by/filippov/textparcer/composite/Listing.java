@@ -1,6 +1,6 @@
 package by.filippov.textparcer.composite;
 
-public class Listing extends TextLeaf {
+public class Listing implements TextComponent {
 	private String listing;
 
 	public Listing(String listing) {

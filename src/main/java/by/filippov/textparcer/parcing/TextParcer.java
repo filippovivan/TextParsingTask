@@ -106,7 +106,6 @@ public final class TextParcer {
 		}
 	}
 
-
 	private void addListingNode(TextComposite result, String listing) {
 		result.add(new Listing(listing));
 	}

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class TextComposite implements TextComponent{
+public class TextComposite implements TextComponent {
 
 	private ArrayList<TextComponent> components;
 
@@ -12,14 +12,17 @@ public class TextComposite implements TextComponent{
 		components = new ArrayList<TextComponent>();
 	}
 
+	@Override
 	public boolean add(TextComponent part) {
 		return components.add(part);
 	}
 
+	@Override
 	public boolean remove(TextComponent part) {
 		return components.remove(part);
 	}
 
+	@Override
 	public List<TextComponent> getChilds() {
 		return Collections.unmodifiableList(components);
 	}

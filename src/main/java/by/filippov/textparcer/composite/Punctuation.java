@@ -1,6 +1,6 @@
 package by.filippov.textparcer.composite;
 
-public class Punctuation extends TextLeaf {
+public class Punctuation implements TextComponent {
 	private char value;
 
 	public Punctuation(char value) {
