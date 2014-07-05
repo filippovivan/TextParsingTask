@@ -2,6 +2,7 @@ package by.filippov.textparcer.composite;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class TextComposite implements TextComponent {
@@ -34,6 +35,11 @@ public class TextComposite implements TextComponent {
 			builder.append(component);
 		}
 		return new String(builder);
+	}
+
+	@Override
+	public Iterator<TextComponent> iterator() {
+		return components.iterator();
 	}
 
 }

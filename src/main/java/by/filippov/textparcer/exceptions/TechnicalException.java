@@ -2,9 +2,6 @@ package by.filippov.textparcer.exceptions;
 
 public class TechnicalException extends Exception {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -1143347965097646467L;
 
 	public TechnicalException(String arg0, Throwable arg1) {

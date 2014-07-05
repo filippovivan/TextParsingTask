@@ -1,5 +1,6 @@
 package by.filippov.textparcer.composite;
 
+import java.util.Iterator;
 import java.util.List;
 
 import by.filippov.textparcer.exceptions.LogicalException;
@@ -20,5 +21,11 @@ public interface TextComponent {
 				"Operation getChilds is not defined for this instance of TextComponent.");
 	}
 
+	default Iterator<TextComponent> iterator() throws LogicalException {
+		throw new LogicalException(
+				"Operation getChilds is not defined for this instance of TextComponent.");
+	}
+
 	String toString();
+
 }

@@ -1,6 +1,7 @@
 package by.filippov.textparcer.composite;
 
 public class Word implements TextComponent {
+
 	private String lexem;
 
 	public Word(String word) {

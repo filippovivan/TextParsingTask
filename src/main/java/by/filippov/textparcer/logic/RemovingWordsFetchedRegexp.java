@@ -1,5 +1,6 @@
 package by.filippov.textparcer.logic;
 
+import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,8 +12,8 @@ public class RemovingWordsFetchedRegexp implements TextModifier {
 
 	private final Pattern pattern;
 
-	public RemovingWordsFetchedRegexp(Pattern pattern) {
-		this.pattern = pattern;
+	public RemovingWordsFetchedRegexp(String pattern) {
+		this.pattern = Pattern.compile(pattern);
 	}
 
 	@Override
@@ -29,11 +30,13 @@ public class RemovingWordsFetchedRegexp implements TextModifier {
 
 	private void modifyConcreteSentence(TextComponent paragrphPart) {
 		TextComposite sentence = (TextComposite) paragrphPart;
-		for (TextComponent lexem : sentence.getChilds()) {
+		Iterator<TextComponent> iterator = sentence.iterator();
+		while (iterator.hasNext()) {
+			TextComponent lexem = iterator.next();
 			if (lexem instanceof Word) {
-				Matcher matcher = pattern.matcher(lexem.toString().trim());
+				Matcher matcher = pattern.matcher(lexem.toString());
 				if (matcher.find()) {
-					sentence.remove(lexem);
+					iterator.remove();
 				}
 			}
 		}
